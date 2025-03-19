@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /downloads/
+
+# Sitemap location
+Sitemap: https://deltaexecutor.us.com/sitemap.xml 

@@ -1,0 +1,1 @@
+Please add your logo file named 'delta-logo.png' in this directory. 
