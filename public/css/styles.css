@@ -3438,3 +3438,289 @@ h1::after {
         height: 250px;
     }
 }
+
+/* Table of Contents Section */
+.toc-section {
+    padding: 4rem 2rem;
+    position: relative;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.96) 100%);
+    overflow: hidden;
+    margin: 0 0 2rem 0;
+    border-radius: 1rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.toc-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+    animation: pulse 8s infinite alternate;
+}
+
+.toc-section .section-title {
+    color: var(--text);
+    font-size: 2.8rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+    letter-spacing: -0.5px;
+}
+
+.toc-section .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-dark), var(--primary), var(--primary-light));
+    border-radius: 2px;
+}
+
+.toc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2;
+    perspective: 1000px;
+}
+
+.toc-item {
+    display: flex;
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: all 0.4s ease, transform 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: translateZ(0);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.toc-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.toc-item::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent, 
+        rgba(255, 255, 255, 0.03), 
+        transparent
+    );
+    transform: rotate(30deg);
+    transition: transform 0.5s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.toc-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
+    border-color: var(--primary-light);
+    z-index: 5;
+}
+
+.toc-item:hover::after {
+    transform: translateX(100%) rotate(30deg);
+    transition: transform 1s ease;
+}
+
+.toc-item:hover::before {
+    opacity: 1;
+}
+
+.toc-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    margin-right: 1.2rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+    transform: translateZ(10px);
+    transition: all 0.3s ease;
+}
+
+.toc-item:hover .toc-icon {
+    transform: translateZ(20px) scale(1.05);
+    box-shadow: 0 12px 25px rgba(99, 102, 241, 0.5);
+}
+
+.toc-icon i {
+    font-size: 1.8rem;
+    color: var(--text);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.toc-content {
+    position: relative;
+    z-index: 2;
+}
+
+.toc-content h3 {
+    color: var(--text);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.5px;
+    transition: color 0.3s ease;
+}
+
+.toc-item:hover .toc-content h3 {
+    color: var(--primary-light);
+    text-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+}
+
+.toc-content p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.5;
+    transition: color 0.3s ease;
+}
+
+.toc-item:hover .toc-content p {
+    color: var(--text);
+}
+
+@media (max-width: 1200px) {
+    .toc-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .toc-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .toc-section {
+        padding: 3rem 1rem;
+        margin: 0 0 1.5rem 0;
+    }
+    
+    .toc-section .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .toc-section .section-title::after {
+        width: 100px;
+        height: 3px;
+        bottom: -10px;
+    }
+    
+    .toc-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    
+    .toc-item {
+        padding: 1.2rem;
+    }
+    
+    .toc-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 15px;
+        margin-right: 1rem;
+    }
+    
+    .toc-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .toc-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .toc-content p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .toc-section {
+        padding: 2rem 1rem;
+        border-radius: 0.7rem;
+    }
+    
+    .toc-section .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .toc-section .section-title::after {
+        width: 80px;
+        height: 3px;
+        bottom: -8px;
+    }
+    
+    .toc-grid {
+        gap: 1rem;
+    }
+    
+    .toc-item {
+        padding: 1rem;
+    }
+    
+    .toc-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: 12px;
+        margin-right: 0.8rem;
+    }
+    
+    .toc-icon i {
+        font-size: 1.3rem;
+    }
+    
+    .toc-content h3 {
+        font-size: 1.1rem;
+    }
+    
+    .toc-content p {
+        font-size: 0.85rem;
+    }
+}
