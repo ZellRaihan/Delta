@@ -3344,3 +3344,97 @@ h1::after {
         font-size: 0.8rem;
     }
 }
+
+/* Video Demo Section */
+.video-demo-section {
+    padding: 4rem 1rem;
+    position: relative;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin: 2rem 0;
+    border: 1px solid var(--border);
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+}
+
+.video-demo-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.video-demo-section .section-title {
+    color: var(--text);
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.video-demo-section .section-intro {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.video-container {
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+    border: 1px solid var(--border);
+    margin: 0 auto;
+    max-width: 1000px;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.video-container:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
+}
+
+.video-container iframe {
+    display: block;
+    border-radius: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .video-demo-section {
+        padding: 3rem 1rem;
+    }
+    
+    .video-demo-section .section-title {
+        font-size: 2rem;
+    }
+    
+    .video-container iframe {
+        height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-demo-section {
+        padding: 2rem 1rem;
+    }
+    
+    .video-demo-section .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .video-container iframe {
+        height: 250px;
+    }
+}
