@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
-Disallow: /downloads/
+Disallow: /private/
+Disallow: /admin/
 
 # Sitemap location
-Sitemap: https://deltaexecutor.us.com/sitemap.xml 
+Sitemap: https://deltaexecut.net/sitemap.xml 
